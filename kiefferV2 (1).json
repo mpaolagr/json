@@ -1,0 +1,541 @@
+{
+  "Name": "kiefferV2",
+  "CreationDate": "2023-1-19",
+  "Commands": [
+    {
+      "Command": "bringBrowserToForeground",
+      "Target": "",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "store",
+      "Target": "fast",
+      "Value": "!replayspeed",
+      "Description": ""
+    },
+    {
+      "Command": "storeText",
+      "Target": "//*[@id=\"page-wrapper\"]/div[3]/div/div[2]/div/div/div/div[2]/div[1]/div[1]/dl/dd[1]/a",
+      "Value": "poliza",
+      "Description": ""
+    },
+    {
+      "Command": "storeText",
+      "Target": "xpath=//*[@id=\"page-wrapper\"]/div[3]/div/div[2]/div/div/div/div[2]/div/div/dl/dd[2]",
+      "Value": "ejecutivo_poliza",
+      "Description": ""
+    },
+    {
+      "Command": "storeText",
+      "Target": "xpath=//*[@id=\"page-wrapper\"]/div[3]/div/div[2]/div/div/div/div[2]/div/div/dl/dd[3]",
+      "Value": "regional",
+      "Description": ""
+    },
+    {
+      "Command": "storeText",
+      "Target": "xpath=//*[@id=\"page-wrapper\"]/div[3]/div/div[2]/div/div/div/div[2]/div/div/dl/dd[4]/a",
+      "Value": "contra",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript",
+      "Target": "var asegurado = ${CONTRA}.replace('Categoria C', '', 'gi');\nvar nombre = asegurado.replace(/\\(.*?\\)/g, '');\nvar completo = nombre.substring(0, nombre.length - 1);\nreturn completo;\n",
+      "Value": "contratante",
+      "Description": ""
+    },
+    {
+      "Command": "storeText",
+      "Target": "//*[@id=\"page-wrapper\"]/div[3]/div/div[2]/div/div/div/div[2]/div[1]/div[1]/dl/dd[5]/a",
+      "Value": "aseguradora",
+      "Description": ""
+    },
+    {
+      "Command": "storeText",
+      "Target": "xpath=//*[@id=\"page-wrapper\"]/div[3]/div/div[2]/div/div/div/div[2]/div/div/dl/dd[6]",
+      "Value": "producto",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript",
+      "Target": "let producto = ${PRODUCTO}.split('-')[1].trim();\nif(producto = 'Vida en grupo corto plazo')\nreturn 'SEGUROS PERSONALES - VIDA GRUPO';\nreturn producto;",
+      "Value": "productobcp",
+      "Description": ""
+    },
+    {
+      "Command": "storeText",
+      "Target": "xpath=//*[@id=\"page-wrapper\"]/div[3]/div/div[2]/div/div/div/div[2]/div/div/dl/dd[8]",
+      "Value": "diagnostico",
+      "Description": ""
+    },
+    {
+      "Command": "storeText",
+      "Target": "xpath=//*[@id=\"page-wrapper\"]/div[3]/div/div[2]/div/div/div/div[2]/div/div/dl/dd[11]",
+      "Value": "ejecutivo_siniestro",
+      "Description": ""
+    },
+    {
+      "Command": "storeText",
+      "Target": "xpath=//*[@id=\"page-wrapper\"]/div[3]/div/div[2]/div/div/div/div[2]/div/div[2]/dl/dd/a",
+      "Value": "asegurado",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript",
+      "Target": "let nombres = '';\nvar asegurado = ${ASEGURADO}.replace('Categoria C', '', 'gi');\nvar nombre = asegurado.replace(/\\(.*?\\)/g, '');\nvar completo = nombre.substring(0, nombre.length - 1);\nlet cantidad = completo.split(' ').length;\nif(cantidad ==4){\nnombres = completo.split(' ')[0] +' '+completo.split(' ')[1];\n return nombres;\n}else{\n  nombres = completo.split(' ')[0].trim();\n return nombres;\n}\n",
+      "Value": "nombres",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript",
+      "Target": "let apellidoP = '';\nvar asegurado = ${ASEGURADO}.replace('Categoria C', '', 'gi');\nvar nombre = asegurado.replace(/\\(.*?\\)/g, '');\nvar completo = nombre.substring(0, nombre.length - 1);\nlet cantidad = completo.split(' ').length;\nif(cantidad ==4){\n  apellidoP= completo.split(' ')[2].trim();\n return apellidoP;\n}else {\napellidoP = completo.split(' ')[1].trim();\nreturn apellidoP;\n}\n",
+      "Value": "apellido_paterno",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript",
+      "Target": "let apellidoP = '';\nvar asegurado = ${ASEGURADO}.replace('Categoria C', '', 'gi');\nvar nombre = asegurado.replace(/\\(.*?\\)/g, '');\nvar completo = nombre.substring(0, nombre.length - 1);\nlet cantidad = completo.split(' ').length;\nif(cantidad ==4){\n  apellidoP= completo.split(' ')[3].trim();\n return apellidoP;\n}else {\napellidoP = completo.split(' ')[2].trim();\nreturn apellidoP;\n}\n",
+      "Value": "apellido_materno",
+      "Description": ""
+    },
+    {
+      "Command": "storeText",
+      "Target": "xpath=//*[@id=\"page-wrapper\"]/div[3]/div/div[2]/div/div/div/div[2]/div/div[2]/dl/dd[2]",
+      "Value": "fecha_nacimiento",
+      "Description": ""
+    },
+    {
+      "Command": "storeText",
+      "Target": "xpath=//*[@id=\"page-wrapper\"]/div[3]/div/div[2]/div/div/div/div[2]/div/div[2]/dl/dd[7]",
+      "Value": "fecha_siniestro",
+      "Description": ""
+    },
+    {
+      "Command": "storeText",
+      "Target": "xpath=//*[@id=\"page-wrapper\"]/div[3]/div/div[2]/div/div/div/div[2]/div/div[2]/dl/dd[8]",
+      "Value": "fecha_denuncia",
+      "Description": ""
+    },
+    {
+      "Command": "storeText",
+      "Target": "xpath=//*[@id=\"page-wrapper\"]/div[3]/div/div[2]/div/div/div/div[2]/div[2]/div/dl/dd",
+      "Value": "asunto",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript",
+      "Target": "let correo = '';\nlet cantidad = ${EJECUTIVO_SINIESTRO}.split(' ').length;\ncorreo = ${EJECUTIVO_SINIESTRO}.split(' ')[0] +'.'+${EJECUTIVO_SINIESTRO}.split(' ')[1]+'@Kieffer-Asociados.com.bo';\n return correo;",
+      "Value": "correo",
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//*[@id=\"page-wrapper\"]/div[3]/div/div[2]/div/div/div/div[2]/div/div[2]/dl/dd/a",
+      "Value": "",
+      "Targets": [
+        "linkText= ",
+        "xpath=//*[@id=\"page-wrapper\"]/div[3]/div/div[2]/div/div/div/div[2]/div/div[2]/dl/dd/a",
+        "xpath=//a[@onclick='oPersona.show(132639)']",
+        "xpath=//div[2]/dl/dd/a",
+        "css=#page-wrapper > div:nth-child(3) > div > div.filters > div > div > div > div.ibox-content > div:nth-child(1) > div:nth-child(2) > dl > dd:nth-child(2) > a"
+      ],
+      "Description": ""
+    },
+    {
+      "Command": "XClick",
+      "Target": "xpath=//*[@id=\"show-panel-persona\"]/div/div/div/button",
+      "Value": "",
+      "Targets": [
+        "xpath=//*[@id=\"show-panel-persona\"]/div/div/div/button",
+        "xpath=//button[@onclick='oPersona.openInTab(1783)']",
+        "xpath=//body/div[10]/div/div/div/button",
+        "css=#show-panel-persona > div > div > div.modal-header > button.btn.btn-success.pull-left"
+      ],
+      "Description": ""
+    },
+    {
+      "Command": "pause",
+      "Target": "3000",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "selectWindow",
+      "Target": "tab=1",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "storeText",
+      "Target": "xpath=//*[@id=\"dShowPerson\"]/div/div[2]/div/div/p",
+      "Value": "tipo_documento",
+      "Description": ""
+    },
+    {
+      "Command": "storeText",
+      "Target": "xpath=//*[@id=\"dShowPerson\"]/div/div[2]/div[2]/div/p",
+      "Value": "nro_documento",
+      "Description": ""
+    },
+    {
+      "Command": "storeText",
+      "Target": "xpath=//*[@id=\"dShowPerson\"]/div/div[2]/div[4]/div/p",
+      "Value": "lugar_expedido",
+      "Description": ""
+    },
+    {
+      "Command": "if",
+      "Target": "${ASEGURADORA} ==\"Crediseguro S.A. Seguros Personales\"",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "selectWindow",
+      "Target": "tab=open",
+      "Value": "https://satazurepresentacion.azurewebsites.net/",
+      "Description": ""
+    },
+    {
+      "Command": "type",
+      "Target": "id=TxtAseguradoPaterno_I",
+      "Value": "${APELLIDO_PATERNO}",
+      "Description": ""
+    },
+    {
+      "Command": "type",
+      "Target": "id=TxtAseguradoMaterno_I",
+      "Value": "${APELLIDO_MATERNO}",
+      "Description": ""
+    },
+    {
+      "Command": "type",
+      "Target": "id=TxtAseguradoNombres_I",
+      "Value": "${NOMBRES}",
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "id=CmbAseguradoTipoDocumento_I",
+      "Value": "",
+      "Targets": [
+        "id=CmbAseguradoTipoDocumento_I",
+        "name=BflInformacionAsegurado$CmbAseguradoTipoDocumento",
+        "xpath=//*[@id=\"CmbAseguradoTipoDocumento_I\"]",
+        "xpath=//input[@id='CmbAseguradoTipoDocumento_I']",
+        "xpath=//div[3]/div/div/div/div/div/input",
+        "css=#CmbAseguradoTipoDocumento_I"
+      ],
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "linkText=${TIPO_DOCUMENTO}",
+      "Value": "",
+      "Targets": [
+        "linkText=SANTA CRUZ",
+        "id=CmbAseguradoCiudad_L_LBI2LBL",
+        "xpath=//*[@id=\"CmbAseguradoCiudad_L_LBI2LBL\"]",
+        "xpath=//a[@id='CmbAseguradoCiudad_L_LBI2LBL']",
+        "xpath=//li[4]/a",
+        "css=#CmbAseguradoCiudad_L_LBI2LBL"
+      ],
+      "Description": ""
+    },
+    {
+      "Command": "type",
+      "Target": "id=TxtAseguradoCI_I",
+      "Value": "${NRO_DOCUMENTO}",
+      "Targets": [
+        "id=TxtAseguradoCI_I",
+        "name=BflInformacionAsegurado$TxtAseguradoCI",
+        "xpath=//*[@id=\"TxtAseguradoCI_I\"]",
+        "xpath=//input[@id='TxtAseguradoCI_I']",
+        "xpath=//div[3]/div[2]/div/div/div/input",
+        "css=#TxtAseguradoCI_I"
+      ],
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "id=CmbAseguradoExtension_I",
+      "Value": "",
+      "Targets": [
+        "id=CmbAseguradoExtension_I",
+        "name=BflInformacionAsegurado$CmbAseguradoExtension",
+        "xpath=//*[@id=\"CmbAseguradoExtension_I\"]",
+        "xpath=//input[@id='CmbAseguradoExtension_I']",
+        "xpath=//div[3]/div[3]/div/div/div/div/input",
+        "css=#CmbAseguradoExtension_I"
+      ],
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "linkText=${LUGAR_EXPEDIDO}",
+      "Value": "",
+      "Targets": [
+        "linkText=SANTA CRUZ",
+        "id=CmbAseguradoCiudad_L_LBI2LBL",
+        "xpath=//*[@id=\"CmbAseguradoCiudad_L_LBI2LBL\"]",
+        "xpath=//a[@id='CmbAseguradoCiudad_L_LBI2LBL']",
+        "xpath=//li[4]/a",
+        "css=#CmbAseguradoCiudad_L_LBI2LBL"
+      ],
+      "Description": ""
+    },
+    {
+      "Command": "store",
+      "Target": "${FECHA_NACIMIENTO}",
+      "Value": "!clipboard",
+      "Description": ""
+    },
+    {
+      "Command": "XClick",
+      "Target": "id=TxtAseguradoFechaNacimiento_I",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "XType",
+      "Target": "${KEY_CTRL+KEY_V}",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//*[@id=\"CmbAseguradoCiudad\"]/div/div[2]/span",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "linkText=${REGIONAL}@POS=2",
+      "Value": "",
+      "Targets": [
+        "linkText=SANTA CRUZ",
+        "id=CmbAseguradoCiudad_L_LBI2LBL",
+        "xpath=//*[@id=\"CmbAseguradoCiudad_L_LBI2LBL\"]",
+        "xpath=//a[@id='CmbAseguradoCiudad_L_LBI2LBL']",
+        "xpath=//li[4]/a",
+        "css=#CmbAseguradoCiudad_L_LBI2LBL"
+      ],
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "id=CmbSiniestroCiudad_I",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "linkText=${REGIONAL}@POS=3",
+      "Value": "",
+      "Targets": [
+        "linkText=SANTA CRUZ",
+        "id=CmbAseguradoCiudad_L_LBI2LBL",
+        "xpath=//*[@id=\"CmbAseguradoCiudad_L_LBI2LBL\"]",
+        "xpath=//a[@id='CmbAseguradoCiudad_L_LBI2LBL']",
+        "xpath=//li[4]/a",
+        "css=#CmbAseguradoCiudad_L_LBI2LBL"
+      ],
+      "Description": ""
+    },
+    {
+      "Command": "store",
+      "Target": "${FECHA_SINIESTRO}",
+      "Value": "!clipboard",
+      "Description": ""
+    },
+    {
+      "Command": "XClick",
+      "Target": "id=TxtSiniestroFechaOcurrencia_I",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "XType",
+      "Target": "${KEY_CTRL+KEY_V}",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "store",
+      "Target": "${FECHA_DENUNCIA}",
+      "Value": "!clipboard",
+      "Description": ""
+    },
+    {
+      "Command": "XClick",
+      "Target": "id=TxtSiniestroFechaDenuncia_I",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "XType",
+      "Target": "${KEY_CTRL+KEY_V}",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "type",
+      "Target": "id=TxtSiniestroCausa_I",
+      "Value": "${DIAGNOSTICO}",
+      "Description": ""
+    },
+    {
+      "Command": "type",
+      "Target": "id=TxtSiniestroDescripcion_I",
+      "Value": "${ASUNTO}",
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "id=CmbPolizaProducto_I",
+      "Value": "",
+      "Targets": [
+        "id=CmbPolizaProducto_I",
+        "name=BflInformacionPoliza$CmbPolizaProducto",
+        "xpath=//*[@id=\"CmbPolizaProducto_I\"]",
+        "xpath=//input[@id='CmbPolizaProducto_I']",
+        "xpath=//div[4]/div[4]/div[2]/div/div/div/div/div/input",
+        "css=#CmbPolizaProducto_I"
+      ],
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "linkText=${PRODUCTOBCP}",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "type",
+      "Target": "id=TxtPolizaTomador_I",
+      "Value": "${CONTRATANTE}",
+      "Description": ""
+    },
+    {
+      "Command": "type",
+      "Target": "id=TxtPolizaNumero_I",
+      "Value": "${POLIZA}",
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "id=CmbPolizaIntermediada_I",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "linkText=SI",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "id=CmbBrokerNombre_I",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "linkText=KIEFFER & ASOCIADOS CORREDORES DE SEGUROS",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "type",
+      "Target": "id=TxtBrokerDenunciante_I",
+      "Value": "${EJECUTIVO_SINIESTRO}",
+      "Targets": [
+        "id=TxtBrokerDenunciante_I",
+        "name=BflInformacionBroker$TxtBrokerDenunciante",
+        "xpath=//*[@id=\"TxtBrokerDenunciante_I\"]",
+        "xpath=//input[@id='TxtBrokerDenunciante_I']",
+        "xpath=//div[5]/div[2]/div[2]/div/div/div/input",
+        "css=#TxtBrokerDenunciante_I"
+      ],
+      "Description": ""
+    },
+    {
+      "Command": "type",
+      "Target": "id=TxtBrokerCorreo_I",
+      "Value": "${CORREO}",
+      "Targets": [
+        "id=TxtBrokerDenunciante_I",
+        "name=BflInformacionBroker$TxtBrokerDenunciante",
+        "xpath=//*[@id=\"TxtBrokerDenunciante_I\"]",
+        "xpath=//input[@id='TxtBrokerDenunciante_I']",
+        "xpath=//div[5]/div[2]/div[2]/div/div/div/input",
+        "css=#TxtBrokerDenunciante_I"
+      ],
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//*[@id=\"CmbBrokerCiudad\"]/div/div[2]/span",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "linkText=${REGIONAL}@POS=4",
+      "Value": "",
+      "Targets": [
+        "linkText=SANTA CRUZ",
+        "id=CmbAseguradoCiudad_L_LBI2LBL",
+        "xpath=//*[@id=\"CmbAseguradoCiudad_L_LBI2LBL\"]",
+        "xpath=//a[@id='CmbAseguradoCiudad_L_LBI2LBL']",
+        "xpath=//li[4]/a",
+        "css=#CmbAseguradoCiudad_L_LBI2LBL"
+      ],
+      "Description": ""
+    },
+    {
+      "Command": "type",
+      "Target": "id=TxtBrokerTelefono_I",
+      "Value": "71759800",
+      "Targets": [
+        "id=TxtBrokerDenunciante_I",
+        "name=BflInformacionBroker$TxtBrokerDenunciante",
+        "xpath=//*[@id=\"TxtBrokerDenunciante_I\"]",
+        "xpath=//input[@id='TxtBrokerDenunciante_I']",
+        "xpath=//div[5]/div[2]/div[2]/div/div/div/input",
+        "css=#TxtBrokerDenunciante_I"
+      ],
+      "Description": ""
+    },
+    {
+      "Command": "elseif",
+      "Target": "",
+      "Value": "",
+      "Description": "Aqui cambia de formulario de acuerdo al tipo de aseguradora"
+    },
+    {
+      "Command": "selectWindow",
+      "Target": "tab=open",
+      "Value": "https://www1.alianza.com.bo/#!/#1",
+      "Description": "Aqui cambia de formulario de acuerdo al tipo de aseguradora"
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "comment",
+      "Target": "click // id=BtnContinuar",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "comment",
+      "Target": "click // id=BflArchivosAdjuntos_BtnRegistrar",
+      "Value": "",
+      "Description": ""
+    }
+  ]
+}
